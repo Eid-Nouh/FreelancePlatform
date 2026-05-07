@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b1320;
+    color: white;
+  }
+  
+  .container {
+    width: 400px;
+    margin: 80px auto;
+    padding: 20px;
+    background: #111c2e;
+    border: 1px solid gold;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: gold;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: gold;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  #message {
+    margin-top: 10px;
+    text-align: center;
+  }
