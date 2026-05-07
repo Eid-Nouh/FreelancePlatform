@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b1320; /* كحلي غامق */
+    color: white;
+  }
+  
+  /* TOP BAR */
+  .top-bar {
+    background: #050a14;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #d4af37;
+  }
+  
+  .top-bar a {
+    color: #d4af37;
+    margin-left: 15px;
+    text-decoration: none;
+  }
+  
+  /* NAVBAR */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background: #0f1b2d;
+    border-bottom: 1px solid gold;
+  }
+  
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: gold;
+  }
+  
+  .auth a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid gold;
+    padding: 6px 12px;
+    border-radius: 5px;
+  }
+  
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('vv.png'); /* غيّر الرابط إلى رابط صورتك */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .hero h1 {
+    font-size: 40px;
+    color: gold;
+  }
+  
+  .hero p {
+    color: #ccc;
+    margin-top: 10px;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .btn-primary {
+    background: gold;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 6px;
+  }
+  
+  .btn-secondary {
+    border: 1px solid gold;
+    color: gold;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  
+  /* CARDS */
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+  }
+  
+  .card {
+    background: #111c2e;
+    padding: 20px;
+    width: 220px;
+    border: 1px solid gold;
+    border-radius: 10px;
+    text-align: center;
+
+  }
+  
+  .card h3 {
+    color: gold;
+  }
+  
+  .card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+
+  }
+  
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 50px;
+    background: #0f1b2d;
+  }
+  
+  .cta button {
+    background: gold;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+  }

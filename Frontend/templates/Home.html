@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Freelance Platform</title>
+
+  <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="left">💼 Freelance Platform</div>
+
+    <div class="right">
+      <a href="/about">Learn More</a>
+      <a href="/support">Support</a>
+      <a href="/profile">Profile</a>
+      <a href="/login">Login</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">FP</div>
+
+    <div class="auth">
+      <a href="/login" class="btn-outline">Login</a>
+      <a href="/logout" class="btn-outline">Logout</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Build Your Freelance Career</h1>
+
+    <p>
+      A modern platform that connects freelancers with clients,<br>
+      job opportunities, and professional services in one place.
+    </p>
+
+    <div class="buttons">
+      <a href="/jobs" class="btn-primary">Find a Job</a>
+      <a href="/jobs/post" class="btn-secondary">Post a Job</a>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="features">
+
+    <div class="card">
+      <h3>Post a Job</h3>
+      <p>Hire talented freelancers for your project.</p>
+      <a href="/jobs/post">Go</a>
+    </div>
+
+    <div class="card">
+      <h3>Find a Job</h3>
+      <p>Discover opportunities that match your skills.</p>
+      <a href="/jobs">Explore</a>
+    </div>
+
+    <div class="card">
+      <h3>Request Services</h3>
+      <p>Get professional services from experts.</p>
+      <a href="/services">Start</a>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Start your journey today</h2>
+    <button>Create Account</button>
+  </section>
+
+</body>
+</html>
