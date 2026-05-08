@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background: #F8F7F4;
+    color: #1F1F1F;
+}
+
+/* Container */
+.container{
+    width: 90%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+/* Title */
+h1{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 38px;
+    color: #2B2B2B;
+}
+
+/* Grid */
+.jobs{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Card */
+.card{
+    background: #EFEAE3;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #DDD6CC;
+    transition: 0.3s;
+}
+
+/* Hover */
+.card:hover{
+    transform: translateY(-5px);
+}
+
+/* Text */
+.card h2{
+    margin-bottom: 10px;
+}
+
+.company{
+    color: #6B6B6B;
+}
+
+.budget{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Button */
+.card a{
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #C6A97A;
+    color: #1F1F1F;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.card a:hover{
+    background: #B89563;
+}

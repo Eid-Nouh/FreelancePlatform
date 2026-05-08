@@ -1,0 +1,1 @@
+console.log("Job Details Page Loaded");

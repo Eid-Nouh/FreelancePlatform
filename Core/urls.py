@@ -5,7 +5,13 @@ from django.conf.urls.static import static
 from Core import settings
 
 urlpatterns = [
+
+
     path('admin/', admin.site.urls),
+
+
+    path('jobs/', include('apps.jobs.urls')),
+    
     path('', include('apps.accounts.urls')),
     path('api/acounts/', include('apps.accounts.urls')),
     path('api/Profile/', include('apps.Profile.urls')),
