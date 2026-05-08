@@ -1,0 +1,482 @@
+/* ============================================
+   LUMINA CLIENT PROFILE STYLE - FIXED
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F8F7F4;
+    font-family: 'Inter', sans-serif;
+    color: #1F1F1F;
+}
+
+/* ========== BACK BUTTON ========== */
+.back-button-container {
+    padding: 1rem 1.5rem 0 1.5rem;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1.5px solid #C6A97A;
+    border-radius: 30px;
+    color: #C6A97A;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #C6A97A;
+    color: #1F1F1F;
+    transform: translateX(-3px);
+}
+
+/* ========== MAIN CONTAINER ========== */
+.client-profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: #FFFFFF;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid #DDD6CC;
+}
+
+/* ========== COVER AREA ========== */
+.cover-area {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #2B2B2B 0%, #C6A97A 100%);
+}
+
+.cover-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cover-default {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2B2B2B 0%, #C6A97A 100%);
+}
+
+/* ========== PROFILE HEADER ========== */
+.profile-header {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    border-bottom: 1px solid #DDD6CC;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.avatar-section {
+    text-align: center;
+    margin-top: -80px;
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #C6A97A;
+    object-fit: cover;
+    background: white;
+}
+
+.avatar-default {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #C6A97A;
+    background: #F8F7F4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #C6A97A;
+}
+
+.edit-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: #2B2B2B;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    background: #C6A97A;
+    color: #1F1F1F;
+}
+
+.info-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.info-section h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #2B2B2B;
+    margin-bottom: 0.25rem;
+}
+
+.headline {
+    color: #6B6B6B;
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+}
+
+/* ========== META INFO (Location & Phone) ========== */
+.meta-info {
+    display: flex;
+    gap: 0.8rem;
+    margin: 0.75rem 0;
+    flex-wrap: wrap;
+}
+
+.meta-info span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #F8F7F4;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid #DDD6CC;
+    font-size: 0.75rem;
+    color: #4A4A4A;
+}
+
+.meta-info i {
+    color: #C6A97A;
+    font-size: 0.7rem;
+}
+
+/* ========== STATS ========== */
+.stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+    background: #F8F7F4;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    min-width: 85px;
+    border: 1px solid #DDD6CC;
+}
+
+.stat .number {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2B2B2B;
+}
+
+.stat .label {
+    font-size: 0.65rem;
+    color: #6B6B6B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========== MAIN CONTENT ========== */
+.profile-main {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.left-column {
+    flex: 1.5;
+    min-width: 250px;
+}
+
+.right-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* ========== CARDS ========== */
+.card {
+    background: #F8F7F4;
+    border-radius: 20px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #DDD6CC;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #2B2B2B;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #C6A97A;
+    display: inline-block;
+}
+
+.card h3 i {
+    color: #C6A97A;
+    margin-right: 0.5rem;
+}
+
+.card p {
+    color: #4A4A4A;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ========== CONTACT LIST ========== */
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #DDD6CC;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #4A4A4A;
+    font-size: 0.85rem;
+}
+
+.contact-list li:last-child {
+    border-bottom: none;
+}
+
+.contact-list li i {
+    width: 22px;
+    color: #C6A97A;
+    font-size: 1rem;
+}
+
+/* ========== SOCIAL LINKS ========== */
+.social-links-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.social-links-profile a {
+    color: #2B2B2B;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 12px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.social-links-profile a:hover {
+    background: #C6A97A;
+    color: white;
+}
+
+.social-links-profile a i {
+    width: 20px;
+}
+
+/* ========== PROJECTS LIST ========== */
+.projects-list {
+    min-height: auto;
+}
+
+.project-item {
+    padding: 0.75rem;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    border: 1px solid #DDD6CC;
+}
+
+.project-item h4 {
+    color: #2B2B2B;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.project-item p {
+    font-size: 0.75rem;
+}
+
+.coming-soon {
+    text-align: center;
+    color: #6B6B6B;
+    padding: 1.5rem;
+    background: #FFFFFF;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+/* ========== PAYMENT METHODS ========== */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.payment-methods p {
+    padding: 0.6rem;
+    background: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #2B2B2B;
+    border: 1px solid #DDD6CC;
+    font-size: 0.8rem;
+}
+
+.payment-methods p i {
+    color: #C6A97A;
+    font-size: 1rem;
+}
+
+.add-payment {
+    margin-top: 0.75rem;
+    padding: 0.6rem;
+    background: transparent;
+    border: 1.5px dashed #C6A97A;
+    border-radius: 12px;
+    color: #C6A97A;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.add-payment:hover {
+    background: #C6A97A;
+    color: #1F1F1F;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .client-profile-container {
+        margin: 1rem;
+        border-radius: 20px;
+    }
+    
+    .cover-area {
+        height: 140px;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .avatar-section {
+        margin-top: -60px;
+    }
+    
+    .avatar, .avatar-default {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .stats {
+        justify-content: center;
+    }
+    
+    .meta-info {
+        justify-content: center;
+    }
+    
+    .profile-main {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .contact-list li {
+        justify-content: center;
+    }
+    
+    .social-links-profile a {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cover-area {
+        height: 100px;
+    }
+    
+    .avatar, .avatar-default {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .info-section h1 {
+        font-size: 1.3rem;
+    }
+    
+    .stats {
+        gap: 0.6rem;
+    }
+    
+    .stat {
+        min-width: 70px;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .stat .number {
+        font-size: 1rem;
+    }
+    
+    .stat .label {
+        font-size: 0.55rem;
+    }
+    
+    .meta-info span {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.5rem;
+    }
+    
+    .card h3 {
+        font-size: 1rem;
+    }
+    
+    .card p, .contact-list li {
+        font-size: 0.75rem;
+    }
+    
+    .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.7rem;
+    }
+}

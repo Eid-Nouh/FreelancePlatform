@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/Profile/edit.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="edit-container">
+    <div class="edit-header">
+        <a href="{% url 'profile' %}" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Profile
+        </a>
+        <h1>Edit Profile</h1>
+        <p>Update your professional information</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="edit-form">
+        {% csrf_token %}
+        
+        <!-- Image Upload Section -->
+        <div class="form-section">
+            <h3><i class="fas fa-image"></i> Profile Images</h3>
+            
+            <div class="image-upload-row">
+                <div class="image-upload-box">
+                    <label>Profile Picture</label>
+                    <div class="image-preview" id="profilePreview">
+                        {% if profile.profile_image %}
+                            <img src="{{ profile.profile_image.url }}" alt="Profile">
+                        {% else %}
+                            <i class="fas fa-user"></i>
+                        {% endif %}
+                    </div>
+                    <input type="file" name="profile_image" id="profileImage" accept="image/*" style="display:none">
+                    <button type="button" class="upload-btn" onclick="document.getElementById('profileImage').click()">
+                        <i class="fas fa-upload"></i> Upload Photo
+                    </button>
+                </div>
+                
+                <div class="image-upload-box">
+                    <label>Cover Image</label>
+                    <div class="image-preview" id="coverPreview">
+                        {% if profile.cover_image %}
+                            <img src="{{ profile.cover_image.url }}" alt="Cover">
+                        {% else %}
+                            <i class="fas fa-cover-image"></i>
+                        {% endif %}
+                    </div>
+                    <input type="file" name="cover_image" id="coverImage" accept="image/*" style="display:none">
+                    <button type="button" class="upload-btn" onclick="document.getElementById('coverImage').click()">
+                        <i class="fas fa-upload"></i> Upload Cover
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Basic Information -->
+        <div class="form-section">
+            <h3><i class="fas fa-user-circle"></i> Basic Information</h3>
+            
+            <div class="form-group">
+                <label>Professional Title</label>
+                <input type="text" name="title" value="{{ profile.title|default:'' }}" placeholder="e.g., Senior Web Developer">
+            </div>
+            
+            <div class="form-group">
+                <label>Headline</label>
+                <input type="text" name="headline" value="{{ profile.headline|default:'' }}" placeholder="Short description about yourself">
+            </div>
+            
+            <div class="form-group">
+                <label>Bio</label>
+                <textarea name="bio" rows="5" placeholder="Tell us about your experience, skills, and what makes you unique">{{ profile.bio|default:'' }}</textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hourly Rate ($)</label>
+                    <input type="number" name="hourly_rate" value="{{ profile.hourly_rate|default:'' }}" placeholder="50" step="0.01">
+                </div>
+                
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" value="{{ profile.location|default:'' }}" placeholder="City, Country">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills -->
+        <div class="form-section">
+            <h3><i class="fas fa-code"></i> Skills</h3>
+            
+            <div class="form-group">
+                <label>Skills (comma separated)</label>
+                <input type="text" name="skills" id="skillsInput" value="{{ skills_list }}" placeholder="Python, Django, React, JavaScript">
+                <small>Enter skills separated by commas</small>
+            </div>
+        </div>
+        
+        <!-- Work Experience Section -->
+        <div class="form-section">
+            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+            <div id="experiences-container">
+                {% for exp in experiences %}
+                <div class="dynamic-item" data-id="{{ exp.id }}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" name="exp_title_{{ exp.id }}" value="{{ exp.title }}" placeholder="e.g., Senior Developer">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" name="exp_company_{{ exp.id }}" value="{{ exp.company }}" placeholder="Company name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" name="exp_start_{{ exp.id }}" value="{{ exp.start_date|date:'Y-m-d' }}">
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="date" name="exp_end_{{ exp.id }}" value="{{ exp.end_date|date:'Y-m-d' }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="exp_current_{{ exp.id }}" {% if exp.current %}checked{% endif %}>
+                            I currently work here
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="exp_desc_{{ exp.id }}" rows="3" placeholder="Describe your responsibilities and achievements">{{ exp.description }}</textarea>
+                    </div>
+                    <button type="button" class="remove-item-btn" onclick="removeExperience(this)">Remove</button>
+                    <hr>
+                </div>
+                {% empty %}
+                <p class="no-items-msg">No experience added yet. Click below to add.</p>
+                {% endfor %}
+            </div>
+            <button type="button" class="add-item-btn" onclick="addExperience()">
+                <i class="fas fa-plus"></i> Add Experience
+            </button>
+        </div>
+        
+        <!-- Education Section -->
+        <div class="form-section">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div id="educations-container">
+                {% for edu in educations %}
+                <div class="dynamic-item" data-id="{{ edu.id }}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" name="edu_degree_{{ edu.id }}" value="{{ edu.degree }}" placeholder="e.g., Bachelor of Computer Science">
+                        </div>
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" name="edu_institution_{{ edu.id }}" value="{{ edu.institution }}" placeholder="University name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="edu_year_{{ edu.id }}" value="{{ edu.year }}" placeholder="e.g., 2020">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="edu_desc_{{ edu.id }}" rows="3" placeholder="Additional details about your education">{{ edu.description }}</textarea>
+                    </div>
+                    <button type="button" class="remove-item-btn" onclick="removeEducation(this)">Remove</button>
+                    <hr>
+                </div>
+                {% empty %}
+                <p class="no-items-msg">No education added yet. Click below to add.</p>
+                {% endfor %}
+            </div>
+            <button type="button" class="add-item-btn" onclick="addEducation()">
+                <i class="fas fa-plus"></i> Add Education
+            </button>
+        </div>
+        
+        <!-- Portfolio Section -->
+        <div class="form-section">
+            <h3><i class="fas fa-folder-open"></i> Portfolio</h3>
+            <div id="portfolio-container">
+                {% for item in portfolios %}
+                <div class="dynamic-item" data-id="{{ item.id }}">
+                    <div class="form-group">
+                        <label>Project Title</label>
+                        <input type="text" name="portfolio_title_{{ item.id }}" value="{{ item.title }}" placeholder="Project name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="portfolio_desc_{{ item.id }}" rows="3" placeholder="Describe your project">{{ item.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Project URL</label>
+                        <input type="url" name="portfolio_url_{{ item.id }}" value="{{ item.project_url }}" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Image</label>
+                        {% if item.image %}
+                            <div class="current-image">
+                                <img src="{{ item.image.url }}" width="80">
+                                <label><input type="checkbox" name="portfolio_remove_image_{{ item.id }}"> Remove image</label>
+                            </div>
+                        {% endif %}
+                        <input type="file" name="portfolio_image_{{ item.id }}" accept="image/*">
+                    </div>
+                    <button type="button" class="remove-item-btn" onclick="removePortfolio(this)">Remove</button>
+                    <hr>
+                </div>
+                {% empty %}
+                <p class="no-items-msg">No portfolio items yet. Click below to add.</p>
+                {% endfor %}
+            </div>
+            <button type="button" class="add-item-btn" onclick="addPortfolio()">
+                <i class="fas fa-plus"></i> Add Portfolio
+            </button>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="form-section">
+            <h3><i class="fas fa-share-alt"></i> Social Links</h3>
+            
+            <div class="form-group">
+                <label><i class="fab fa-github"></i> GitHub</label>
+                <input type="url" name="github" value="{{ profile.github|default:'' }}" placeholder="https://github.com/username">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fab fa-linkedin"></i> LinkedIn</label>
+                <input type="url" name="linkedin" value="{{ profile.linkedin|default:'' }}" placeholder="https://linkedin.com/in/username">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fab fa-twitter"></i> Twitter</label>
+                <input type="url" name="twitter" value="{{ profile.twitter|default:'' }}" placeholder="https://twitter.com/username">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-globe"></i> Personal Website</label>
+                <input type="url" name="personal_website" value="{{ profile.personal_website|default:'' }}" placeholder="https://yourwebsite.com">
+            </div>
+        </div>
+        
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <button type="submit" class="save-btn">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+            <a href="{% url 'profile' %}" class="cancel-btn">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Preview Profile Image
+    document.getElementById('profileImage').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const preview = document.getElementById('profilePreview');
+                preview.innerHTML = `<img src="${event.target.result}" alt="Preview">`;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    // Preview Cover Image
+    document.getElementById('coverImage').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const preview = document.getElementById('coverPreview');
+                preview.innerHTML = `<img src="${event.target.result}" alt="Preview">`;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    let expCounter = {{ experiences.count }};
+    let eduCounter = {{ educations.count }};
+    let portfolioCounter = {{ portfolios.count }};
+    
+    // Add Experience
+    function addExperience() {
+        expCounter++;
+        const container = document.getElementById('experiences-container');
+        const newItem = document.createElement('div');
+        newItem.className = 'dynamic-item';
+        newItem.setAttribute('data-new', 'true');
+        newItem.innerHTML = `
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" name="new_exp_title_${expCounter}" placeholder="e.g., Senior Developer">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" name="new_exp_company_${expCounter}" placeholder="Company name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" name="new_exp_start_${expCounter}">
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="new_exp_end_${expCounter}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="new_exp_current_${expCounter}">
+                    I currently work here
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="new_exp_desc_${expCounter}" rows="3" placeholder="Describe your responsibilities and achievements"></textarea>
+            </div>
+            <button type="button" class="remove-item-btn" onclick="removeExperience(this)">Remove</button>
+            <hr>
+        `;
+        const noMsg = container.querySelector('.no-items-msg');
+        if (noMsg) noMsg.remove();
+        container.appendChild(newItem);
+    }
+    
+    function removeExperience(btn) {
+        btn.parentElement.remove();
+    }
+    
+    // Add Education
+    function addEducation() {
+        eduCounter++;
+        const container = document.getElementById('educations-container');
+        const newItem = document.createElement('div');
+        newItem.className = 'dynamic-item';
+        newItem.setAttribute('data-new', 'true');
+        newItem.innerHTML = `
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Degree</label>
+                    <input type="text" name="new_edu_degree_${eduCounter}" placeholder="e.g., Bachelor of Computer Science">
+                </div>
+                <div class="form-group">
+                    <label>Institution</label>
+                    <input type="text" name="new_edu_institution_${eduCounter}" placeholder="University name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <input type="number" name="new_edu_year_${eduCounter}" placeholder="e.g., 2020">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="new_edu_desc_${eduCounter}" rows="3" placeholder="Additional details about your education"></textarea>
+            </div>
+            <button type="button" class="remove-item-btn" onclick="removeEducation(this)">Remove</button>
+            <hr>
+        `;
+        const noMsg = container.querySelector('.no-items-msg');
+        if (noMsg) noMsg.remove();
+        container.appendChild(newItem);
+    }
+    
+    function removeEducation(btn) {
+        btn.parentElement.remove();
+    }
+    
+    // Add Portfolio
+    function addPortfolio() {
+        portfolioCounter++;
+        const container = document.getElementById('portfolio-container');
+        const newItem = document.createElement('div');
+        newItem.className = 'dynamic-item';
+        newItem.setAttribute('data-new', 'true');
+        newItem.innerHTML = `
+            <div class="form-group">
+                <label>Project Title</label>
+                <input type="text" name="new_portfolio_title_${portfolioCounter}" placeholder="Project name">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="new_portfolio_desc_${portfolioCounter}" rows="3" placeholder="Describe your project"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Project URL</label>
+                <input type="url" name="new_portfolio_url_${portfolioCounter}" placeholder="https://example.com">
+            </div>
+            <div class="form-group">
+                <label>Project Image</label>
+                <input type="file" name="new_portfolio_image_${portfolioCounter}" accept="image/*">
+            </div>
+            <button type="button" class="remove-item-btn" onclick="removePortfolio(this)">Remove</button>
+            <hr>
+        `;
+        const noMsg = container.querySelector('.no-items-msg');
+        if (noMsg) noMsg.remove();
+        container.appendChild(newItem);
+    }
+    
+    function removePortfolio(btn) {
+        btn.parentElement.remove();
+    }
+</script>
+{% endblock %}

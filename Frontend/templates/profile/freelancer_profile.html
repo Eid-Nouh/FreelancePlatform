@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/Profile/freelancer.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <button onclick="goBack()" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+    </div>
+
+    <!-- Cover Image -->
+    <div class="cover-area">
+        {% if profile.cover_image %}
+            <img src="{{ profile.cover_image.url }}" alt="Cover">
+        {% else %}
+            <div class="cover-default"></div>
+        {% endif %}
+    </div>
+    
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="avatar-section">
+            {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" alt="Avatar" class="avatar">
+            {% else %}
+                <div class="avatar-default">
+                    <i class="fas fa-user"></i>
+                </div>
+            {% endif %}
+            <!-- Edit Profile button -->
+<a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+        </div>
+        
+        <div class="info-section">
+            <h1>{{ profile_user.username }}</h1>
+            <h3>{{ profile.title }}</h3>
+            <p class="headline">{{ profile.headline }}</p>
+            
+            <div class="meta-info">
+                {% if profile.location %}
+                    <span><i class="fas fa-map-marker-alt"></i> {{ profile.location }}</span>
+                {% endif %}
+                {% if profile.hourly_rate %}
+                    <span><i class="fas fa-dollar-sign"></i> ${{ profile.hourly_rate }}/hr</span>
+                {% endif %}
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">{{ profile.total_projects }}</span>
+                    <span class="label">Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="number">{{ profile.total_hours }}</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="stat">
+                    <span class="number">{{ profile.rating }}</span>
+                    <span class="label">Rating</span>
+                </div>
+                <div class="stat">
+                    <span class="number">{{ profile.reviews_count }}</span>
+                    <span class="label">Reviews</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="profile-main">
+        <div class="left-column">
+            <!-- About -->
+            <div class="card">
+                <h3><i class="fas fa-user"></i> About</h3>
+                <p>{{ profile.bio|default:"No bio added yet." }}</p>
+            </div>
+            
+            <!-- Skills -->
+            <div class="card">
+                <h3><i class="fas fa-code"></i> Skills</h3>
+                <div class="skills-list">
+                    {% for skill in skills %}
+                        <span class="skill-tag">{{ skill.name }}</span>
+                    {% empty %}
+                        <p>No skills added yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Experience -->
+            <div class="card">
+                <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                {% for exp in experiences %}
+                    <div class="experience-item">
+                        <h4>{{ exp.title }}</h4>
+                        <p class="company">{{ exp.company }}</p>
+                        <p class="date">
+                            {{ exp.start_date|date:"M Y" }} - 
+                            {% if exp.current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                        </p>
+                        <p>{{ exp.description }}</p>
+                    </div>
+                {% empty %}
+                    <p>No experience added yet.</p>
+                {% endfor %}
+            </div>
+            
+            <!-- Education -->
+            <div class="card">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                {% for edu in educations %}
+                    <div class="education-item">
+                        <h4>{{ edu.degree }}</h4>
+                        <p class="institution">{{ edu.institution }}</p>
+                        <p class="date">Class of {{ edu.year }}</p>
+                        <p>{{ edu.description }}</p>
+                    </div>
+                {% empty %}
+                    <p>No education added yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <!-- Portfolio -->
+            <div class="card">
+                <h3><i class="fas fa-folder-open"></i> Portfolio</h3>
+                <div class="portfolio-grid">
+                    {% for item in portfolios %}
+                        <div class="portfolio-item">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            {% endif %}
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.description|truncatewords:20 }}</p>
+                            {% if item.project_url %}
+                                <a href="{{ item.project_url }}" target="_blank">View Project →</a>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No portfolio items yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="card">
+                <h3><i class="fas fa-share-alt"></i> Connect</h3>
+                <div class="social-links-profile">
+                    {% if profile.github %}
+                        <a href="{{ profile.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    {% endif %}
+                    {% if profile.linkedin %}
+                        <a href="{{ profile.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    {% endif %}
+                    {% if profile.twitter %}
+                        <a href="{{ profile.twitter }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                    {% endif %}
+                    {% if profile.personal_website %}
+                        <a href="{{ profile.personal_website }}" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Go Back JavaScript -->
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}
