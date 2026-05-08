@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More</title>
+    <!-- Font Awesome for icons (professional, no extra CSS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/learn_more.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-rocket"></i> Freelance Platform
+        </div>
+        <div class="links">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/accounts/login/"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1><i class="fas fa-quote-left"></i> MOUNIR & EID – Building Your Freelance Career With Confidence <i class="fas fa-quote-right"></i></h1>
+        <p>
+            Our Freelance Platform helps freelancers and clients connect in a professional, elegant, and trusted environment. 
+            Whether you're a seasoned expert or just starting, we provide the tools you need to grow your career.
+        </p>
+        <p>
+            Join a community where talent meets opportunity – securely, transparently, and effortlessly.
+        </p>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="card">
+            <i class="fas fa-search-dollar" style="font-size: 40px; color: gold;"></i>
+            <h2>Find Jobs</h2>
+            <p>
+                Browse professional freelance opportunities from different categories like design, development, marketing, writing, and more.
+                Filter by budget, duration, and skill level to find your perfect match.
+            </p>
+            <p><strong>✔ 10,000+ monthly projects</strong></p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-clipboard-list" style="font-size: 40px; color: gold;"></i>
+            <h2>Post Projects</h2>
+            <p>
+                Clients can post jobs and hire talented freelancers easily. Describe your project, set a budget, and receive proposals from qualified professionals within hours.
+            </p>
+            <p><strong>✔ 95% satisfaction rate</strong></p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-id-card" style="font-size: 40px; color: gold;"></i>
+            <h2>Professional Profiles</h2>
+            <p>
+                Showcase your skills, portfolio, and experience professionally. Add certifications, work history, and client reviews to stand out from the crowd.
+            </p>
+            <p><strong>✔ Trusted by 5000+ freelancers</strong></p>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <h2><i class="fas fa-crown"></i> Why Choose Our Platform?</h2>
+        <p>
+            We focus on creating a clean and premium freelancing experience with simple navigation, elegant design, and scalable architecture.
+            Our platform offers:
+        </p>
+        <ul style="list-style: none; padding: 0; max-width: 700px; margin: 20px auto; text-align: left;">
+            <li><i class="fas fa-check-circle" style="color: gold;"></i> End-to-end encryption for secure payments</li>
+            <li><i class="fas fa-check-circle" style="color: gold;"></i> 24/7 customer support and dispute resolution</li>
+            <li><i class="fas fa-check-circle" style="color: gold;"></i> Smart matching algorithm for better job recommendations</li>
+            <li><i class="fas fa-check-circle" style="color: gold;"></i> Transparent fee structure – no hidden costs</li>
+        </ul>
+        <p>Start your journey today and experience freelancing the way it should be.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><i class="fas fa-copyright"></i> 2026 Freelance Platform - All Rights Reserved | <i class="fas fa-heart" style="color: gold;"></i> Built for success</p>
+    </footer>
+
+    <script src="{% static 'js/learn_more.js' %}"></script>
+</body>
+</html>

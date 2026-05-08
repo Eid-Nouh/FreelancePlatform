@@ -1,37 +1,90 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
-
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/jobs/job_details.css' %}">
-
 </head>
-
 <body>
 
-    <div class="container">
+<div class="main-container">
+    <!-- Back arrow with icon -->
+    <a href="/jobs/" class="back-arrow"><i class="fas fa-arrow-left"></i> Back to Jobs</a>
 
-        <div class="card">
-
-            <h1>{{ job.title }}</h1>
-
-            <h3>{{ job.company }}</h3>
-
-            <p>{{ job.description }}</p>
-
-            <h2>Budget: ${{ job.budget }}</h2>
-
-            <a href="/jobs/">Back</a>
-
+    <!-- Two columns: Job Card (Left) + Apply Form (Right) -->
+    <div class="two-columns">
+        <!-- Left: Job Details Card -->
+        <div class="job-card">
+            <div class="job-header">
+                <h1>{{ job.title }}</h1>
+                <h3>{{ job.company }}</h3>
+                <p class="posted-by"><i class="fas fa-user-circle"></i> Posted by: {{ job.user.username }} ({{ job.user.email }})</p>
+            </div>
+            <div class="job-description">
+                <p>{{ job.description }}</p>
+            </div>
+            <div class="job-budget">
+                <h2><i class="fas fa-dollar-sign"></i> Budget: ${{ job.budget }}</h2>
+            </div>
         </div>
 
+        <!-- Right: Apply Form -->
+        <div class="apply-card">
+            <h2><i class="fas fa-pen-alt"></i> Apply for this Job</h2>
+            <form method="POST" action="/jobs/apply/{{ job.id }}/" id="applyForm">
+                {% csrf_token %}
+                <input type="text" name="full_name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="phone" placeholder="Phone Number">
+                <textarea name="message" placeholder="Write your proposal..." required></textarea>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+            </form>
+            <div id="formMessage" class="message"></div>
+        </div>
     </div>
 
-</body>
+    <!-- Applicants Section -->
+    <div class="applicants-section">
+        <div class="section-header">
+            <h2><i class="fas fa-users"></i> Applicants for this service</h2>
+            <span class="applicants-count">{{ applications|length }} Applicant</span>
+        </div>
 
+        {% if applications %}
+            <div class="applicants-grid">
+                {% for app in applications %}
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <h3 class="applicant-name">{{ app.full_name }}</h3>
+                            <div class="applicant-icons">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="applicant-details">
+                            <p><i class="fas fa-envelope"></i> <span class="detail-label">Email:</span> {{ app.email }}</p>
+                            {% if app.phone %}
+                                <p><i class="fas fa-phone-alt"></i> <span class="detail-label">Phone:</span> {{ app.phone }}</p>
+                            {% endif %}
+                            <div class="applicant-message">
+                                <i class="fas fa-comment-dots"></i> <span class="detail-label">Message:</span>
+                                <p>{{ app.message|linebreaksbr }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-applicants">
+                <i class="fas fa-info-circle"></i> No applicants yet. Be the first to apply!
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="{% static 'js/jobs/job_details.js' %}"></script>
+</body>
 </html>

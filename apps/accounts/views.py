@@ -52,3 +52,12 @@ def logout_view(request):
     logout(request)
     messages.info(request, 'تم تسجيل الخروج')
     return redirect('login')
+
+
+def learn_more(request):
+
+    return render(request, 'learn_more.html')
+
+def support(request):
+
+    return render(request, 'support.html')
