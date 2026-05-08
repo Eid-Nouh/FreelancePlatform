@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b1320;
+  color: white;
+}
+
+.top-bar {
+  background: #050a14;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #d4af37;
+}
+
+.top-bar a {
+  color: #d4af37;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: #0f1b2d;
+  border-bottom: 1px solid gold;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: gold;
+}
+
+.links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  width: 95%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: #111c2e;
+  border: 1px solid gold;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  color: gold;
+  text-align: center;
+  margin-top: 0;
+}
+
+.meta p {
+  color: #ccc;
+  margin: 6px 0;
+}
+
+.desc h3 {
+  color: gold;
+  margin-bottom: 6px;
+}
+
+.desc p {
+  color: #ddd;
+}
+
+.actions {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  background: gold;
+  color: black;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.saved {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #9dffad;
+  color: #9dffad;
+  background: rgba(157, 255, 173, 0.08);
+}
+

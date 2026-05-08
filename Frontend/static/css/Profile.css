@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b1320;
+  color: white;
+}
+
+.top-bar {
+  background: #050a14;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #d4af37;
+}
+
+.top-bar a {
+  color: #d4af37;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: #0f1b2d;
+  border-bottom: 1px solid gold;
+}
+
+.logo {
+  color: gold;
+  font-weight: bold;
+}
+
+.links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.container {
+  width: 95%;
+  max-width: 800px;
+  margin: 30px auto;
+  background: #111c2e;
+  border: 1px solid gold;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  color: gold;
+}
+
+.saved {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #9dffad;
+  color: #9dffad;
+}
+
+.info p {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+.form {
+  margin-top: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: gold;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
