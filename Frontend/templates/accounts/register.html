@@ -1,47 +1,121 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel="stylesheet" href="{% static 'css/Register.css' %}">
-</head>
-<body>
-  <div class="top-bar">
-    <div class="left">💼 Freelance Platform</div>
-    <div class="right">
-      <a href="{% url 'login' %}">Login</a>
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="brand-header">
+            <div class="logo">LUMINA</div>
+            <div class="tagline">Freelance Platform</div>
+        </div>
+        
+        <div class="auth-card">
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join our community of creators and freelancers</p>
+            
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                
+                <div class="input-group">
+                    <label>Username</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Choose a username" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password1" id="password1" placeholder="Create a password" required>
+                        <i class="fas fa-eye toggle-password" data-target="password1"></i>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar" style="width:0%"></div>
+                    </div>
+                    <div class="strength-text" id="strengthText">Password strength: Weak</div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-check-circle"></i>
+                        <input type="password" name="password2" id="password2" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                
+                <div class="role-selector">
+                    <label class="role-card">
+                        <input type="radio" name="user_type" value="client" checked>
+                        <i class="fas fa-user-tie"></i>
+                        <span>Client</span>
+                        <small>Hire freelancers</small>
+                    </label>
+                    <label class="role-card">
+                        <input type="radio" name="user_type" value="freelancer">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Freelancer</span>
+                        <small>Offer services</small>
+                    </label>
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+                
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+                
+                <button type="button" class="btn-google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                Already have an account? 
+                <a href="{% url 'login' %}" class="link-gold">Sign In</a>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="container">
-    <h1>Create Account</h1>
-
-    <form method="POST" class="form">
-      {% csrf_token %}
-
-      <label>Username</label>
-      <input type="text" name="username" placeholder="Choose a username" />
-
-      <label>Email</label>
-      <input type="email" name="email" placeholder="you@example.com" />
-
-      <label>Password</label>
-      <input type="password" name="password" placeholder="Create a password" />
-
-      {% if error %}
-        <div class="error">{{ error }}</div>
-      {% endif %}
-
-      <button type="submit">Register</button>
-    </form>
-
-    <div class="small">
-      Already have an account? <a href="{% url 'login' %}">Login</a>
+    
+    <div class="auth-side">
+        <div class="side-content">
+            <i class="fas fa-briefcase"></i>
+            <h3>Start Your Journey</h3>
+            <p>Join thousands of freelancers and companies who trust our platform</p>
+            <div class="features-mini">
+                <span><i class="fas fa-shield-alt"></i> Secure</span>
+                <span><i class="fas fa-bolt"></i> Fast</span>
+                <span><i class="fas fa-headset"></i> 24/7 Support</span>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+{% endblock %}
 
-  <script src="{% static 'js/Register.js' %}"></script>
-</body>
-</html>
-
+{% block extra_js %}
+<script src="{% static 'js/accounts/register.js' %}"></script>
+{% endblock %}
