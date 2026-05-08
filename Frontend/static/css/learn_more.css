@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: #F8F7F4;
+    color: #1F1F1F;
+}
+
+
+/* Navbar */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 60px;
+
+    background: #EFEAE3;
+
+    border-bottom: 1px solid #DDD6CC;
+}
+
+.logo{
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    color: #C6A97A;
+}
+
+.links{
+    display: flex;
+    gap: 25px;
+}
+
+.links a{
+    text-decoration: none;
+    color: #1F1F1F;
+    transition: 0.3s;
+}
+
+.links a:hover{
+    color: #B89563;
+}
+
+
+/* Hero */
+
+.hero{
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1{
+    font-size: 55px;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero p{
+    color: #6B6B6B;
+    font-size: 18px;
+}
+
+
+/* Features */
+
+.features{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    padding: 60px;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 300px;
+
+    background: white;
+
+    border: 1px solid #DDD6CC;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.card h2{
+    margin-bottom: 15px;
+    color: #C6A97A;
+}
+
+
+/* About */
+
+.about{
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.about h2{
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+}
+
+.about p{
+    max-width: 700px;
+    margin: auto;
+    color: #6B6B6B;
+}
+
+
+/* Footer */
+
+footer{
+    margin-top: 80px;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background: #EFEAE3;
+
+    border-top: 1px solid #DDD6CC;
+}
