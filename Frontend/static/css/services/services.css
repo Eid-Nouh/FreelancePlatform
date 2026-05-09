@@ -1,0 +1,166 @@
+/* ---------- الأساسيات ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F8F7F4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1F1F1F;
+    padding: 30px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ---------- رأس الصفحة مع الرسومات ---------- */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.header i {
+    font-size: 28px;
+    color: #C6A97A;
+}
+
+h1 {
+    color: #C6A97A;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ---------- صندوق الفورم ---------- */
+.form-box {
+    background: white;
+    border: 1px solid #DDD6CC;
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 50px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    flex: 1;
+    min-width: 180px;
+}
+
+input {
+    padding: 12px 15px;
+    border: 1px solid #DDD6CC;
+    border-radius: 40px;
+    font-size: 14px;
+    background: #FEFEFE;
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #C6A97A;
+    box-shadow: 0 0 0 3px rgba(198,169,122,0.2);
+}
+
+button {
+    background: #C6A97A;
+    color: #1F1F1F;
+    border: none;
+    padding: 12px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 5px;
+}
+
+button i {
+    margin-right: 8px;
+}
+
+button:hover {
+    background: #B89563;
+    transform: translateY(-2px);
+}
+
+/* ---------- شبكة الكروت (مدمجة ومرتبة) ---------- */
+.services-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #DDD6CC;
+    border-radius: 20px;
+    padding: 18px;
+    transition: 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+    border-color: #C6A97A;
+}
+
+.card-icon {
+    text-align: center;
+    font-size: 32px;
+    color: #C6A97A;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 20px;
+    color: #1F1F1F;
+    margin-bottom: 12px;
+    text-align: center;
+    border-bottom: 1px dashed #EEE6DC;
+    padding-bottom: 8px;
+}
+
+.card p {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #3A3A3A;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card p i {
+    width: 20px;
+    color: #C6A97A;
+    font-size: 13px;
+}
+
+.card strong {
+    font-weight: 600;
+    color: #5E5E5E;
+}
+

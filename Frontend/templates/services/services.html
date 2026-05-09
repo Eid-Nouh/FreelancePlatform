@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <!-- أيقونات بسيطة من Font Awesome (سهلة وخفيفة) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/services/services.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <!-- عنوان مع رسمة جنبه -->
+        <div class="header">
+            <i class="fas fa-concierge-bell"></i>
+            <h1>Request Services</h1>
+            <i class="fas fa-sparkles"></i>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-box">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <input type="text" name="service_type" placeholder="Service Type">
+                    <input type="text" name="idea_name" placeholder="Idea Name">
+                </div>
+                <div class="form-row">
+                    <input type="number" name="expected_price" placeholder="Expected Price">
+                    <input type="text" name="full_name" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input type="text" name="phone" placeholder="Phone Number">
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Publish Service</button>
+            </form>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section">
+            {% for service in services %}
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h2>{{ service.idea_name }}</h2>
+                <p><i class="fas fa-tag"></i> <strong>Type:</strong> {{ service.service_type }}</p>
+                <p><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> ${{ service.expected_price }}</p>
+                <p><i class="fas fa-user"></i> <strong>Name:</strong> {{ service.full_name }}</p>
+                <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> {{ service.phone }}</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> {{ service.email }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
