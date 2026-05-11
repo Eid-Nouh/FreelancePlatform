@@ -26,15 +26,9 @@ body {
     color: #C6A97A;
     font-size: 0.85rem;
     font-weight: 500;
-    cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.back-btn:hover {
-    background: #C6A97A;
-    color: #1F1F1F;
-    transform: translateX(-3px);
-}
 
 .back-btn i {
     font-size: 0.8rem;
@@ -242,22 +236,26 @@ body {
 }
 
 /* ========== EXPERIENCE & EDUCATION ========== */
-.experience-item, .education-item {
+.experience-item,
+.education-item {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #DDD6CC;
 }
 
-.experience-item:last-child, .education-item:last-child {
+.experience-item:last-child,
+.education-item:last-child {
     border-bottom: none;
 }
 
-.experience-item h4, .education-item h4 {
+.experience-item h4,
+.education-item h4 {
     color: #2B2B2B;
     font-weight: 600;
 }
 
-.company, .institution {
+.company,
+.institution {
     color: #C6A97A;
     font-size: 0.85rem;
     margin: 0.25rem 0;
@@ -333,23 +331,23 @@ body {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .profile-main {
         flex-direction: column;
     }
-    
+
     .stats {
         justify-content: center;
     }
-    
+
     .meta-info {
         justify-content: center;
     }
-    
+
     .back-button-container {
         text-align: left;
     }
-    
+
     .cover-area {
         height: 180px;
     }
@@ -360,40 +358,41 @@ body {
         margin: 1rem;
         border-radius: 20px;
     }
-    
+
     .cover-area {
         height: 120px;
     }
-    
-    .avatar, .avatar-default {
+
+    .avatar,
+    .avatar-default {
         width: 100px;
         height: 100px;
     }
-    
+
     .avatar-section {
         margin-top: -50px;
     }
-    
+
     .profile-header {
         padding: 1rem;
     }
-    
+
     .profile-main {
         padding: 1rem;
     }
-    
+
     .card {
         padding: 1rem;
     }
-    
+
     .stats {
         gap: 1rem;
     }
-    
+
     .stat .number {
         font-size: 1.2rem;
     }
-    
+
     .back-btn {
         padding: 0.3rem 0.8rem;
         font-size: 0.75rem;
