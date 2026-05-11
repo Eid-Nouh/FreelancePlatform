@@ -5,8 +5,8 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     user_type = models.CharField(
         max_length=10,
-        choices=[('client', 'عميل'), ('freelancer', 'مستقل')],
-        default='client'
+        choices=[('freelancer', 'مستقل')],  # فقط مستقل
+        default='freelancer'
     )
     
     def __str__(self):

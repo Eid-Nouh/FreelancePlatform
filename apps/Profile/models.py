@@ -76,35 +76,3 @@ class Portfolio(models.Model):
     def __str__(self):
         return self.title
 
-
-
-
-class ClientProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='client_profile')
-    
-    # Personal Info (like freelancer but for client)
-    profile_image = models.ImageField(upload_to='client_profiles/', blank=True, null=True)
-    cover_image = models.ImageField(upload_to='client_covers/', blank=True, null=True)
-    headline = models.CharField(max_length=200, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
-    location = models.CharField(max_length=100, blank=True, null=True)
-    
-    # Contact
-    phone = models.CharField(max_length=20, blank=True, null=True)
-    
-    # Social Links
-    github = models.URLField(blank=True, null=True)
-    linkedin = models.URLField(blank=True, null=True)
-    twitter = models.URLField(blank=True, null=True)
-    
-    # Stats
-    total_projects_posted = models.IntegerField(default=0)
-    total_spent = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
-    reviews_count = models.IntegerField(default=0)
-    
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return f"Client: {self.user.username}"

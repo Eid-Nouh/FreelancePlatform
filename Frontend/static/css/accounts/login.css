@@ -1,409 +1,119 @@
 /* ============================================
-   LUMINA LOGIN STYLE - Minimal + Luxury
+   BASE & RESET
    ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    background: #F8F7F4;
-    font-family: 'Inter', sans-serif;
-    color: #1F1F1F;
-    line-height: 1.5;
-    overflow-x: hidden;
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1117 0%, #1a1d2e 100%);
+  padding: 2rem;
 }
 
-/* ========== MAIN LAYOUT ========== */
-.auth-wrapper {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
+/* ============================================
+   LOGIN BOX
+   ============================================ */
+.login-box {
+  background: #1e2235;
+  border: 1px solid #2e3250;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
 }
 
-.auth-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 4rem;
-    max-width: 600px;
-    background: #F8F7F4;
+.login-box h2 {
+  color: #e8eaf6;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-.auth-side {
-    flex: 1;
-    background: #EFEAE3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+.input-box {
+  margin-bottom: 1.2rem;
 }
 
-.auth-side::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -20%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(198,169,122,0.1) 0%, rgba(198,169,122,0) 70%);
-    border-radius: 50%;
+.input-box label {
+  display: block;
+  color: #9fa8c7;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
 }
 
-.auth-side::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -20%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(198,169,122,0.08) 0%, rgba(198,169,122,0) 70%);
-    border-radius: 50%;
+.input-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #252840;
+  border: 1px solid #3a3f5c;
+  border-radius: 8px;
+  color: #e8eaf6;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-/* ========== BRANDING ========== */
-.brand-header {
-    margin-bottom: 2.5rem;
-    animation: fadeInUp 0.6s ease;
+.input-box input::placeholder {
+  color: #5a6080;
 }
 
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #2B2B2B 0%, #C6A97A 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0.5rem;
+.input-box input:focus {
+  border-color: #6c63ff;
 }
 
-.tagline {
-    color: #6B6B6B;
-    font-size: 0.9rem;
-    font-weight: 400;
-    border-right: 3px solid #C6A97A;
-    padding-right: 0.75rem;
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+.login-box button[type="submit"] {
+  width: 100%;
+  padding: 0.85rem;
+  background: #6c63ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
 }
 
-/* ========== AUTH CARD ========== */
-.auth-card {
-    background: #FFFFFF;
-    border-radius: 28px;
-    padding: 2rem 2rem 2.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-    border: 1px solid #DDD6CC;
-    transition: transform 0.3s ease;
-    animation: fadeInUp 0.6s ease 0.1s both;
+.login-box button[type="submit"]:hover {
+  background: #5a52e0;
 }
 
-.auth-card:hover {
-    transform: translateY(-2px);
+/* ============================================
+   REGISTER LINK
+   ============================================ */
+.register-link {
+  text-align: center;
+  margin-top: 1.4rem;
+  font-size: 0.88rem;
+  color: #9fa8c7;
 }
 
-.auth-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #1F1F1F;
-    margin-bottom: 0.5rem;
+.register-link a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.auth-subtitle {
-    color: #6B6B6B;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-}
-
-/* ========== FORM STYLES ========== */
-.input-group {
-    margin-bottom: 1.5rem;
-}
-
-.input-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #2B2B2B;
-    margin-bottom: 0.5rem;
-}
-
-.input-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-icon i:first-child {
-    position: absolute;
-    right: 1rem;
-    color: #C6A97A;
-    font-size: 1rem;
-    pointer-events: none;
-}
-
-.input-icon input {
-    width: 100%;
-    padding: 0.9rem 2.5rem 0.9rem 1rem;
-    border: 1.5px solid #DDD6CC;
-    border-radius: 16px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    background: white;
-    transition: all 0.25s ease;
-}
-
-.input-icon input:focus {
-    outline: none;
-    border-color: #C6A97A;
-    box-shadow: 0 0 0 4px rgba(198, 169, 122, 0.1);
-}
-
-.input-icon input::placeholder {
-    color: #B0B0B0;
-    font-size: 0.85rem;
-}
-
-.toggle-password {
-    position: absolute;
-    left: 1rem;
-    cursor: pointer;
-    color: #9b9b9b;
-    transition: color 0.2s ease;
-}
-
-.toggle-password:hover {
-    color: #C6A97A;
-}
-
-/* ========== FORM OPTIONS ========== */
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: #6B6B6B;
-    cursor: pointer;
-}
-
-.remember-me input {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    accent-color: #C6A97A;
-}
-
-.forgot-link {
-    font-size: 0.85rem;
-    color: #C6A97A;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.forgot-link:hover {
-    color: #B89563;
-    text-decoration: underline;
-}
-
-/* ========== BUTTONS ========== */
-.btn-primary {
-    width: 100%;
-    background: #2B2B2B;
-    border: none;
-    padding: 1rem;
-    border-radius: 40px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #C6A97A;
-    color: #1F1F1F;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(198, 169, 122, 0.25);
-}
-
-.btn-google {
-    width: 100%;
-    background: transparent;
-    border: 1.5px solid #DDD6CC;
-    padding: 0.9rem;
-    border-radius: 40px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    color: #2B2B2B;
-    margin-top: 1rem;
-}
-
-.btn-google:hover {
-    background: #F8F7F4;
-    border-color: #C6A97A;
-}
-
-/* ========== DIVIDER ========== */
-.auth-divider {
-    text-align: center;
-    margin: 1.5rem 0;
-    position: relative;
-}
-
-.auth-divider span {
-    background: white;
-    padding: 0 1rem;
-    color: #6B6B6B;
-    font-size: 0.8rem;
-    position: relative;
-    z-index: 1;
-}
-
-.auth-divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background: #DDD6CC;
-    left: 0;
-    z-index: 0;
-}
-
-/* ========== FOOTER ========== */
-.auth-footer {
-    text-align: center;
-    margin-top: 1.8rem;
-    font-size: 0.85rem;
-    color: #6B6B6B;
-}
-
-.link-gold {
-    color: #C6A97A;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.link-gold:hover {
-    border-bottom: 1px solid #C6A97A;
-}
-
-/* ========== RIGHT SIDE CONTENT ========== */
-.side-content {
-    text-align: center;
-    max-width: 340px;
-    padding: 2rem;
-    z-index: 1;
-    animation: fadeInRight 0.6s ease;
-}
-
-.side-content i {
-    font-size: 3.5rem;
-    color: #C6A97A;
-    margin-bottom: 1rem;
-}
-
-.side-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #2B2B2B;
-}
-
-.side-content p {
-    color: #4A4A4A;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.features-mini {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    font-size: 0.8rem;
-    color: #6B6B6B;
-}
-
-.features-mini i {
-    font-size: 0.9rem;
-    margin: 0 0.3rem;
-}
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 968px) {
-    .auth-side {
-        display: none;
-    }
-    
-    .auth-container {
-        max-width: 100%;
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .auth-container {
-        padding: 1.5rem;
-    }
-    
-    .auth-card {
-        padding: 1.5rem;
-    }
-    
-    .auth-title {
-        font-size: 1.7rem;
-    }
-    
-    .form-options {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
+.register-link a:hover {
+  text-decoration: underline;
 }
