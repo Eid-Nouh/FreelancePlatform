@@ -6,18 +6,13 @@ from Core import settings
 
 urlpatterns = [
 
-
     path('admin/', admin.site.urls),
 
-
-    path('jobs/', include('apps.jobs.urls')),
-    
     path('', include('apps.accounts.urls')),
-    path('Profile/', include('apps.Profile.urls')),
+    path('jobs/', include('apps.jobs.urls')),
     path('services/', include('apps.services.urls')),
-    path('api/jobs/', include('apps.jobs.urls')),
-
 
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

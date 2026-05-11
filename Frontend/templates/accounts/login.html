@@ -1,46 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
+    <title>Login – LUMINA</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-    <div class="container">
+<div class="page-center">
+    <div class="login-box">
 
-        <div class="login-box">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in to your account</p>
 
-            <h2>Login</h2>
+        <!-- Error message from the server -->
+        {% if error %}
+            <p class="error-msg">{{ error }}</p>
+        {% endif %}
 
-            <form>
+        <form method="post">
+            {% csrf_token %}
 
-                <div class="input-box">
-                    <label>Username</label>
-                    <input type="text" placeholder="Enter Username">
-                </div>
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter your username" required>
 
-                <div class="input-box">
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter Password">
-                </div>
+            <label>Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
 
-                <button type="submit">Login</button>
+            <button type="submit">Sign In</button>
+        </form>
 
-            </form>
-
-            <div class="register-link">
-                Don't have an account? <a href="{% url 'register' %}">Register</a>
-            </div>
-
-        </div>
+        <p class="link-text">Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
 
     </div>
+</div>
 
+<script src="{% static 'js/accounts/login.js' %}"></script>
 </body>
-
 </html>
