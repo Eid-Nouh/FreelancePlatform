@@ -1,25 +1,18 @@
-/* ============================================
-   LUMINA HOME STYLE - Same as Register/Login
-   ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Inter', sans-serif;
     background: #F8F7F4;
     color: #1F1F1F;
-    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+
 }
 
 /* ========== TOP BAR ========== */
 .top-bar {
     background: #2B2B2B;
     color: #EFEAE3;
-    padding: 0.75rem 5%;
+    padding: 1.5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,7 +28,6 @@ body {
     color: #EFEAE3;
     text-decoration: none;
     margin-left: 1.5rem;
-    transition: color 0.2s;
 }
 
 .top-bar .right a:hover {
@@ -49,7 +41,6 @@ body {
     align-items: center;
     padding: 1.2rem 5%;
     background: #FFFFFF;
-    border-bottom: 1px solid #DDD6CC;
 }
 
 .logo {
@@ -60,13 +51,8 @@ body {
 
 .logo-text {
     background: linear-gradient(135deg, #2B2B2B 0%, #C6A97A 100%);
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-
-.logo-dot {
-    color: #C6A97A;
 }
 
 .auth {
@@ -88,8 +74,6 @@ body {
     text-decoration: none;
     color: #C6A97A;
     font-weight: 500;
-    transition: all 0.2s;
-    background: transparent;
 }
 
 .btn-outline:hover {
@@ -97,25 +81,9 @@ body {
     color: #1F1F1F;
 }
 
-.btn-primary {
-    padding: 0.5rem 1.2rem;
-    background: #2B2B2B;
-    border-radius: 40px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: all 0.2s;
-    border: 1.5px solid #2B2B2B;
-}
-
-.btn-primary:hover {
-    background: #C6A97A;
-    border-color: #C6A97A;
-    color: #1F1F1F;
-    transform: translateY(-2px);
-}
-
 /* ========== HERO SECTION ========== */
+
+
 .hero {
     text-align: center;
     padding: 5rem 2rem;
@@ -144,6 +112,24 @@ body {
     justify-content: center;
 }
 
+.btn-primary {
+    padding: 0.5rem 1.2rem;
+    background: #2B2B2B;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: 1.8px solid #C6A97A;
+
+}
+
+.btn-primary:hover {
+    background: #C6A97A;
+    border-color: #C6A97A;
+    color: #1F1F1F;
+}
+
+
 .btn-secondary {
     padding: 0.75rem 2rem;
     border: 1.5px solid #C6A97A;
@@ -151,14 +137,12 @@ body {
     text-decoration: none;
     color: #C6A97A;
     font-weight: 500;
-    transition: all 0.2s;
-    background: transparent;
+
 }
 
 .btn-secondary:hover {
     background: #C6A97A;
     color: #1F1F1F;
-    transform: translateY(-2px);
 }
 
 /* ========== FEATURES CARDS ========== */
@@ -177,14 +161,10 @@ body {
     padding: 2rem;
     text-align: center;
     flex: 1;
-    min-width: 250px;
-    max-width: 320px;
-    transition: all 0.3s ease;
     border: 1px solid #DDD6CC;
 }
 
 .card:hover {
-    transform: translateY(-5px);
     border-color: #C6A97A;
     box-shadow: 0 20px 30px rgba(198, 169, 122, 0.1);
 }
@@ -249,69 +229,3 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(198, 169, 122, 0.25);
 }
-
-
-/* ========== FOOTER ========== */
-.footer {
-    background: #2B2B2B;
-    color: #EFEAE3;
-    padding-top: 3rem;
-    margin-top: 0;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5% 2rem;
-    gap: 2rem;
-}
-
-.footer-col {
-    flex: 1;
-    min-width: 180px;
-}
-
-.footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #C6A97A 0%, #EFEAE3 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 1rem;
-}
-
-.footer-desc {
-    color: #9B9B9B;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: #EFEAE3;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background: #C6A97A;
-    color: #2B2B2B;
-    transform: translateY(-3px);
-}
-

@@ -9,7 +9,6 @@ class Job(models.Model):
     description = models.TextField()
     budget = models.IntegerField()
     company = models.CharField(max_length=100)
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
